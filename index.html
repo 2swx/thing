@@ -64,9 +64,9 @@
                             }
                             $(".CinamaList").css("display", "block")
                             $(".about, .tablet").css("display", "none")
-                            $(`.Fallenexe_${item.id}`).remove()
-                            $(".CinamaList").append(`<div class="CinamaObject Fallenexe_${item.id}" id='Fallenexe_${item.id}'></div>`)
-                            new YT.Player(`Fallenexe_${item.id}`, {
+                            $(`.wewec_${item.id}`).remove()
+                            $(".CinamaList").append(`<div class="CinamaObject wewec_${item.id}" id='wewec_${item.id}'></div>`)
+                            new YT.Player(`wewec_${item.id}`, {
                                 width: '100%',
                                 height: '100%',
                                 videoId: url,
@@ -92,8 +92,8 @@
                                             }
                                             $(".about").css("display", "block")
                                             $(".tablet, .CinamaList").css("display", "none")
-                                            $(`.Fallenexe_${item.id}`).remove()
-                                            $.post("http://Fallenexe_cinema/updateState", JSON.stringify({ id: item.id }))
+                                            $(`.wewec_${item.id}`).remove()
+                                            $.post("http://wewec/updateState", JSON.stringify({ id: item.id }))
                                         }
                                     }),
                                     'onError': (function (event) {
@@ -101,8 +101,8 @@
                                             player[item.id].destroy()
                                             player[item.id] = null
                                         }
-                                        $(`.Fallenexe_${item.id}`).remove()
-                                        $.post("http://Fallenexe_cinema/updateState", JSON.stringify({ id: item.id }))
+                                        $(`.wewec_${item.id}`).remove()
+                                        $.post("http://wewec/updateState", JSON.stringify({ id: item.id }))
                                     })
                                 }
                             })
@@ -114,7 +114,7 @@
                         item.list.forEach((element) => {
                             if (player[element.id] != null) {
                                 player[element.id].setVolume(element.maxVolume - Number(element.distance))
-                                if (element.distance <= 160) $(`.Fallenexe_${element.id}`).css("display", "block")
+                                if (element.distance <= 160) $(`.wewec_${element.id}`).css("display", "block")
                             }
                         })
                         break
@@ -123,7 +123,7 @@
                             player[item.id].destroy()
                             player[item.id] = null
                         }
-                        $(`.Fallenexe_${item.id}`).remove()
+                        $(`.wewec_${item.id}`).remove()
                         break
                     case 'hide':
                         $(".about").css("display", "block")
@@ -134,7 +134,7 @@
                             player[item.id].destroy()
                             player[item.id] = null
                         }
-                        $(`.Fallenexe_${item.id}`).remove()
+                        $(`.wewec_${item.id}`).remove()
                         $(".about").css('display', `block`)
                         break
                     case 'show_about':
